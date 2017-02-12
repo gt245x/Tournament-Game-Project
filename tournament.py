@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 #
-# tournament.py -- implementation of a Swiss-system tournament
+# tournament.py -- implementation of a Swiss-system tournament in which players are not eliminated when they lose a
+#                   a match but are paired in each round with opponents having appr the same win-loss record.
 #
 
 import psycopg2
@@ -50,9 +51,6 @@ def registerPlayer(name):
     c.execute ("INSERT INTO players (name) VALUES (%s)",(name,))
     db.commit()
     db.close()
-
-
-
 
 def playerStandings():
     """Returns a list of the players, sorted by the number of wins"""
